@@ -31,6 +31,60 @@
 namespace ultraschall {
 namespace reaper {
 
+#ifdef ULTRASCHALL_PLATFORM_WIN32
+std::string FindUltraschallPluginDirectory()
+{
+   std::string pluginDirectory;
+
+   HMODULE moduleHandle = GetModuleHandle("reaper_ultraschall.dll");
+   if(moduleHandle != 0)
+   {
+      CHAR dllPath[_MAX_PATH] = {0};
+      const DWORD charCount = GetModuleFileName(moduleHandle, dllPath, _MAX_PATH);
+      if(charCount > 0)
+      {
+         pluginDirectory = dllPath;
+         if(pluginDirectory.empty() == false)
+         {
+            const size_t offset = pluginDirectory.rfind('\\');
+            if(offset != std::string::npos)
+            {
+               pluginDirectory = pluginDirectory.substr(0, offset);
+            }
+            else
+            {
+               pluginDirectory.clear();
+            }
+         }
+      }
+   }
+
+   return pluginDirectory;
+}
+
+std::string FindUltraschallPluginPath()
+{
+   return FileManager::AppendPath(FindUltraschallPluginDirectory(), "reaper_ultraschall");
+}
+
+std::string FindSWSPluginPath()
+{
+   std::string swsPluginPath;
+
+   const std::string swsPlugin2_8UserPath = FileManager::ProgramFilesDirectory() + "\\REAPER (x64)\\Plugins\\reaper_sws64.dll";
+   if(FileManager::FileExists(swsPlugin2_8UserPath) == true)
+   {
+      swsPluginPath = swsPlugin2_8UserPath;
+   }
+   else
+   {
+      swsPluginPath = FileManager::AppendPath(FindUltraschallPluginDirectory(), "reaper_sws64.dll"); 
+   }
+
+   return swsPluginPath;
+}
+#endif
+
 bool SWSVersionCheck()
 {
    bool result = false;
@@ -39,7 +93,7 @@ bool SWSVersionCheck()
    const std::string swsPlugin2_8UserPath = FileManager::UserApplicationSupportDirectory() +
       "/REAPER/UserPlugins/reaper_sws_extension.dylib";
 #else
-   const std::string swsPlugin2_8UserPath = FileManager::ProgramFilesDirectory() + "\\REAPER (x64)\\Plugins\\reaper_sws64.dll";
+   const std::string swsPlugin2_8UserPath = FindSWSPluginPath();
 #endif // #ifndef WIN32 
 
    if(FileManager::FileExists(swsPlugin2_8UserPath) == true)
@@ -48,9 +102,9 @@ bool SWSVersionCheck()
       if(pStream != 0)
       {
 #ifdef ULTRASCHALL_PLATFORM_MACOS
-         static const uint64_t originalCrc = 749893719;
+         static const uint64_t originalCrc = 1372454054;
 #else
-         static const uint64_t originalCrc = 3584691243;
+         static const uint64_t originalCrc = 3406725881;
 #endif // #ifndef WIN32
 
          const uint64_t crc = pStream->CRC32();

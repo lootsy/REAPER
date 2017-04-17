@@ -2,6 +2,43 @@
 
 Die nachfolgenden Features werden ausführlich in unseren Ultraschall-Tutorial-Videos erklärt: [http://ultraschall.fm/tutorials/](http://ultraschall.fm/tutorials/)
 
+## 3.0.3 Miedinger - 2017-April-6
+
+* REAPER: **Festlegung auf eine exakte Versionsnummer**
+*Um die Konsistenz und Stabilität des Systems zu gewährleisten, wird bei jedem Start nun auf eine spezifische Version von REAPER geprüft (5.40). Zukünftige Releases werden dann jeweils mit neuen Versionen gekoppelt sein.* **Von einem manuellen Update von REAPER ist daher in Zukunft unbedingt abzusehen**, *die Ultraschall-Erweiterungen werden dann deaktiviert.*
+
+* Actions: **Überarbeitete Routing Snapshots**
+*Um während einer Live-Sendung - etwa mit Hilfe von Studio Link OnAir - verschiedene Routing-Situationen vorbereiten und abrufen zu können (etwa Preshow mit nur Musik auf dem Stream, Show mit allen Stimmen und Aftershow mit leisem Musikbett), wurde der Bereich der Routing-Snapshots komplett neu implementiert und mit einer eigenen Verwaltungsoberfläche versehen. Die Snapshots berücksichtigen nun auch Sends in Richtung Master sowie Hardware-Sends.*
+
+* Keymap: **Shortcuts für Routing-Snapshots**
+*Mit `F1` bis `F4` werden gesetzte Routing Snapshots abgerufen. Mit `shift` + `F1` bis `F4` wird die gerade eingestellte Routing-Matrix in den jeweiligen Snapshot-Slot geschrieben.*
+
+* Keymap Mac: **Anpassungen an Systemstandard**
+*Unter macOS wurden folgende Aktionen für Shortcuts an den Systemstandard angepasst: Drag&Copy von Items erfolgt nun über `alt` + `gedrückter Primärklick`. Der aktuelle Projekt-Tab wird mit `cmd` + `w` geschlossen.*
+
+* Streaming: **Update für Studio Link OnAir**
+*Eine neue Version von Studio Link OnAir wird ausgeliefert, die ein seltenes Stabilitätsproblem unter Windows behebt.*
+
+* Editing: **Weiter verbessertes Verhalten der `esc`-Taste**
+*Die "lösche jegliche Auswahl"-Funktion beinhaltet nun auch nicht-selektierte Envelope-Points. Erstaunlich.*
+
+* Editing: **Midi Actions für EQ-Regler**
+*Zwei neue Ultraschall-Midi Aktionen ermöglichen das leichte Verschieben des Inpoint und Outpoint über einen klassischen EQ-Regler auf einem Midi-Interface: In der Mittelstellung passiert nichts, ein Drehen nach Links oder Rechts bewirkt eine beschleunigte Bewegung in die jeweilige Richtung. Je weiter der Einschlag, desto schneller bewegt sich der In-/Outpoint. Die Skripte (`ultraschall_midi_move_start_of_time_slection.lua` und `ultraschall_midi_move_end_of_time_slection.lua`) müssen manuell einem Midi-Signal zugeordnet werden.*
+
+* Installer: **Update Check**
+*Der Update Check auf neue Versionen von Ultraschall kann nun jederzeit im neuen Startscreen ab- oder angeschaltet werden.*
+
+* Theme: **Ultraschall-Startscreen erweitert**
+*Der neue Startscreen enthält nun auch die Informationen des alten `About Ultraschall...` Menüeintrages, der somit entfällt. Die Versionsnummern aller installierten Komponenten sind nun im Startscreen unter dem `Details`-Button erreichbar.*
+
+* Soundboard: **Bugfix**
+*Das Soundboard stoppt nun nicht mehr die Wiedergabe, sobald ein Routing-Preset abgerufen wird.*
+
+* Soundboard: **Presets**
+*Das Soundboard funktioniert nun durchgängig mit Presets. Dadurch ist es möglich, beliebige Sound-Sets zu speichern und zu laden, auch während einer Aufnahme. Duch den fliegenden Wechsel von Presets während einer Aufnahme ist es nun auch leicht möglich, mehr als 24 Sounds in einer Sendung zu verwenden. Man kann die Presets den eigenen Projekt-Presets zuweisen, damit jede Sendung gleich mit den richtigen Einspielern geladen wird.*
+
+
+
 ## 3.0.2 Miedinger - 2017-März-06
 * Editing: **Shortcuts für In- und Outpoint**
 *Mit den Tasten `alt` + `i` sowie `alt` + `o` springt man zum Anfang bzw. Ende einer Zeitauswahl. Mit `shift` + `i` sowie `shift` + `o` wird ab der jeweiligen Position abgespielt.*
@@ -36,7 +73,7 @@ Die nachfolgenden Features werden ausführlich in unseren Ultraschall-Tutorial-V
 *Der LAME MP3 Encoder wird in Version 3.98.3 automatisch installiert.*
 
 * Studio Link: **Update**
-Ultraschall wird mit aktualisiertem StudioLink Plug-in in Version 16.12.0. ausgeliefert.
+*Ultraschall wird mit aktualisiertem StudioLink Plug-in in Version 16.12.0. ausgeliefert.*
 
 * Theme: **Ultraschall-Startscreen**
 *Ein neuer Startscreen informiert über die erfolgreiche Installation und gibt erste Hinweise sowie Links zu Hilfe-Ressourcen.*

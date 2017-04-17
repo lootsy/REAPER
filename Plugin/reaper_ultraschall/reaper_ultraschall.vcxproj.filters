@@ -42,9 +42,6 @@
     <ClCompile Include="framework\TranscriptItem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="reaper\AboutAction.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="reaper\Application.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,9 +60,6 @@
     <ClCompile Include="reaper\FileManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="reaper\InvalidEntryPointException.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="reaper\reaper_ultraschall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -82,9 +76,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="reaper\ThemeVersionCheck.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="reaper\VersionString.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="reaper\NotificationWindow.cpp">
@@ -227,9 +218,6 @@
     <ClInclude Include="framework\TranscriptItem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="reaper\AboutAction.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="reaper\Application.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -251,9 +239,6 @@
     <ClInclude Include="reaper\ICustomAction.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="reaper\InvalidEntryPointException.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="reaper\ReaperEntryPoints.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -270,9 +255,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="reaper\VersionString.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="reaper\NotificationWindow.h">

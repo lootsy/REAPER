@@ -2,15 +2,52 @@
 
 Die nachfolgenden Features werden ausführlich in unseren Ultraschall-Tutorial-Videos erklärt: [http://ultraschall.fm/tutorials/](http://ultraschall.fm/tutorials/)
 
+## 3.0.3 Miedinger - 2017-April-6
+
+* REAPER: **Festlegung auf eine exakte Versionsnummer**
+*Um die Konsistenz und Stabilität des Systems zu gewährleisten, wird bei jedem Start nun auf eine spezifische Version von REAPER geprüft (5.40). Zukünftige Releases werden dann jeweils mit neuen Versionen gekoppelt sein.* **Von einem manuellen Update von REAPER ist daher in Zukunft unbedingt abzusehen**, *die Ultraschall-Erweiterungen werden dann deaktiviert.*
+
+* Actions: **Überarbeitete Routing Snapshots**
+*Um während einer Live-Sendung - etwa mit Hilfe von Studio Link OnAir - verschiedene Routing-Situationen vorbereiten und abrufen zu können (etwa Preshow mit nur Musik auf dem Stream, Show mit allen Stimmen und Aftershow mit leisem Musikbett), wurde der Bereich der Routing-Snapshots komplett neu implementiert und mit einer eigenen Verwaltungsoberfläche versehen. Die Snapshots berücksichtigen nun auch Sends in Richtung Master sowie Hardware-Sends.*
+
+* Keymap: **Shortcuts für Routing-Snapshots**
+*Mit `F1` bis `F4` werden gesetzte Routing Snapshots abgerufen. Mit `shift` + `F1` bis `F4` wird die gerade eingestellte Routing-Matrix in den jeweiligen Snapshot-Slot geschrieben.*
+
+* Keymap Mac: **Anpassungen an Systemstandard**
+*Unter macOS wurden folgende Aktionen für Shortcuts an den Systemstandard angepasst: Drag&Copy von Items erfolgt nun über `alt` + `gedrückter Primärklick`. Der aktuelle Projekt-Tab wird mit `cmd` + `w` geschlossen.*
+
+* Streaming: **Update für Studio Link OnAir**
+*Eine neue Version von Studio Link OnAir wird ausgeliefert, die ein seltenes Stabilitätsproblem unter Windows behebt.*
+
+* Editing: **Weiter verbessertes Verhalten der `esc`-Taste**
+*Die "lösche jegliche Auswahl"-Funktion beinhaltet nun auch nicht-selektierte Envelope-Points. Erstaunlich.*
+
+* Editing: **Midi Actions für EQ-Regler**
+*Zwei neue Ultraschall-Midi Aktionen ermöglichen das leichte Verschieben des Inpoint und Outpoint über einen klassischen EQ-Regler auf einem Midi-Interface: In der Mittelstellung passiert nichts, ein Drehen nach Links oder Rechts bewirkt eine beschleunigte Bewegung in die jeweilige Richtung. Je weiter der Einschlag, desto schneller bewegt sich der In-/Outpoint. Die Skripte (`ultraschall_midi_move_start_of_time_slection.lua` und `ultraschall_midi_move_end_of_time_slection.lua`) müssen manuell einem Midi-Signal zugeordnet werden.*
+
+* Installer: **Update Check**
+*Der Update Check auf neue Versionen von Ultraschall kann nun jederzeit im neuen Startscreen ab- oder angeschaltet werden.*
+
+* Theme: **Ultraschall-Startscreen erweitert**
+*Der neue Startscreen enthält nun auch die Informationen des alten `About Ultraschall...` Menüeintrages, der somit entfällt. Die Versionsnummern aller installierten Komponenten sind nun im Startscreen unter dem `Details`-Button erreichbar.*
+
+* Soundboard: **Bugfix**
+*Das Soundboard stoppt nun nicht mehr die Wiedergabe, sobald ein Routing-Preset abgerufen wird.*
+
+* Soundboard: **Presets**
+*Das Soundboard funktioniert nun durchgängig mit Presets. Dadurch ist es möglich, beliebige Sound-Sets zu speichern und zu laden, auch während einer Aufnahme. Duch den fliegenden Wechsel von Presets während einer Aufnahme ist es nun auch leicht möglich, mehr als 24 Sounds in einer Sendung zu verwenden. Man kann die Presets den eigenen Projekt-Presets zuweisen, damit jede Sendung gleich mit den richtigen Einspielern geladen wird.*
+
+
+
 ## 3.0.2 Miedinger - 2017-März-06
 * Editing: **Shortcuts für In- und Outpoint**
-*Mit den Tasten `alt` + `i` sowie `alt` + `o` springt man zu Anfang bzw. Ende einer Zeitauswahl. Mit `shift` + `i` sowie `shift` + `o` Wird ab der jeweiligen Position abgespielt.*
+*Mit den Tasten `alt` + `i` sowie `alt` + `o` springt man zum Anfang bzw. Ende einer Zeitauswahl. Mit `shift` + `i` sowie `shift` + `o` wird ab der jeweiligen Position abgespielt.*
 
 * Editing: **Verbesserter Ripple-Cut**
 *Die neue Ripple-Cut Funktion (`cmd` + `x` sowie das entsprechende Icon) verhalten sich nun sinnvoller: ist nichts ausgewählt, passiert nichts. Ist eine Zeitauswahl markiert, wird nur diese geschnitten, unabhängig von eventuell zugleich ausgewählten Items. Ist keine Zeitauswahl markiert, aber genau ein Item, so wird anhand dessen Rändern ein Ripple-Cut vorgenommen (Tim's Ripple Cut). Ist keine Zeitauswahl markiert, sowie mehrere Items, passiert nichts.*
 
 * Editing: **Schneller Wechsel und Einfrieren der Trackhöhe**
-*Mit der Taste `h` schaltet man schnell zwischen zwei (einstellbaren) Trackhöhen hin und her, die dann ihre Höhe auch bei Verschieben der Fenster untereinander behalten. Das Umschalten wirkt auf alle markierten Spuren. Ist keine Spur markiert, werden alle Spuren verändert. Das Einfrieren der Höhe kann mit mit den Zoom-Schaltern wieder aufgehoben werden.*
+*Mit der Taste `h` schaltet man schnell zwischen zwei (einstellbaren) Trackhöhen hin und her, die dann ihre Höhe auch bei Verschieben der Fenster untereinander behalten. Das Umschalten wirkt auf alle markierten Spuren. Ist keine Spur markiert, werden alle Spuren verändert. Das Einfrieren der Höhe kann mit den Zoom-Schaltern wieder aufgehoben werden.*
 
 * Keymap: **Optimierung der Tastatur-Shortcuts und Mapping für Windows**
 *Die Belegung von Shortcuts von Windows wurde dem Verhalen auf macOS angepasst. Die PDF-Schablone funktioniert nun auf beiden Systemen gleich. Neue Shortcuts sind etwa: `shift` + `n` - Normalisierung ausgewählter Items sowie `alt` + `d` - ausschalten aller Docks für ablenkungsfreies Editieren.*
@@ -20,6 +57,9 @@ Die nachfolgenden Features werden ausführlich in unseren Ultraschall-Tutorial-V
 
 * Actions: **Erweitertes Prepare all tracks for editing**
 *Die Funktion beinhaltet nun das Einschalten der Sends aller Spuren richtung Masterkanal - eine gängige Fehlerquelle für scheinbar fehlende Spuren im finalen Mix.*
+
+* Mastering: **Erweiterte Episodenbilder**
+*Im Projektordner sind für den MP3-Export nun auch Episodenbilder mit dem Namen `cover.jpg`, `cover.jpeg` sowie `cover.png` zugelassen um schnell ein Standardbild nachnutzen zu können. Danke an Mespotine für die Idee.*
 
 ## 3.0.1 Miedinger - 2017-März-05
 
@@ -33,7 +73,7 @@ Die nachfolgenden Features werden ausführlich in unseren Ultraschall-Tutorial-V
 *Der LAME MP3 Encoder wird in Version 3.98.3 automatisch installiert.*
 
 * Studio Link: **Update**
-Ultraschall wird mit aktualisiertem StudioLink Plug-in in Version 16.12.0. ausgeliefert.
+*Ultraschall wird mit aktualisiertem StudioLink Plug-in in Version 16.12.0. ausgeliefert.*
 
 * Theme: **Ultraschall-Startscreen**
 *Ein neuer Startscreen informiert über die erfolgreiche Installation und gibt erste Hinweise sowie Links zu Hilfe-Ressourcen.*
@@ -115,6 +155,17 @@ Zusätzlich gibt es unten links nun einen neuen Reiter für `Loudness`, mit dem 
 
 * Soundboard [Mac]: **Bugfix**
 *Bugfix: Aufgenommene Soundboard-Spuren werden jetzt abgespielt.*
+
+* Misc [Windows]: **Kompatibilität**
+*Updates für Windows 10 Version 1607 (Build 14393, Anniversary-Update).*
+
+* StudioLink: **Update**
+*Ultraschall enthält jetzt die neue StudioLink-Version 16.04.1.*
+
+## 2.2.2 Gropius - 2016-August-14
+
+* Soundboard [Mac]: **Bugfix**
+*Bugfix: Aufgenommene Soundbooard-Spuren werdem jetzt abgespielt.*
 
 * Misc [Windows]: **Kompatibilität**
 *Updates für Windows 10 Version 1607 (Build 14393, Anniversary-Update).*

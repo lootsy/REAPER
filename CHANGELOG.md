@@ -1,6 +1,64 @@
-# Changelog
+# Ultraschall Changelog
 
-Please consult our tutorial videos (German) for detailed advide: [http://ultraschall.fm/tutorials/](http://ultraschall.fm/tutorials/)
+Please consult our tutorial videos (German) for detailed advice: [http://ultraschall.fm/tutorials/](http://ultraschall.fm/tutorials/)
+
+## 3.0.3 Miedinger - 2017-März-
+
+* REAPER: **Commitment to a specific version number**
+*For the sake of troubleshooting and in order to maintain system stability, Ultraschall will check for a specific REAPER version ( **5.40** ) on every launch. Future releases will be bound to specific newer versions of REAPER **We therefore strongly advise NOT to manually update REAPER**, since the Ultraschall extensions would be deactivated.*
+
+* Actions: **Reworked Routing Snapshots**
+*It is sometimes necessary to prepare and recall different routing situations – e.g. using Studio-Link OnAir – such as pre-show with music on the stream, the actual show with all the speakers, and after-show with music at low volume. The routing snapshot area has therefore been reimplemented completely and enhanced with its own user interface. The snapshots now also support Sends to Master and Hardware Sends.*
+
+* Keymap: **Shortcuts for Routing Snapshots**
+*`F1` to `F4` access pre-defined Routing Snapshots. `Shift` + `F1` to `F4` writes the currently configured Routing Matrix into the respective snapshot slot.*
+
+* Keymap Mac: **Aligned with system standard**
+*The following shortcut actions were aligned with macOS' system standard: Drag-and-copy of items now works with `alt` + `primary clicking-and-holding`. The current project tab is closed by  `cmd` + `w`.*
+
+* Streaming: **Update for Studio Link OnAir**
+*Fixes a rare stability problem in the Windows version of Studio Link OnAir.*
+
+* Editing: **Further improvements to `esc` key behavior**
+*The "delete entire selection" function now includes also unselected envelope points. Amazing.*
+
+* Editing: **Midi actions for EQ tuner**
+*Two new Ultraschall midi actions simplify moving the in- and outpoints via a classical EQ tuner on a midi interface: The middle setting has no effect, a turn to the left or right speeds up movements in the respective direction. The further the turn, the faster the in-/outpoint moves. The scripts (`ultraschall_midi_move_start_of_time_slection.lua` und `ultraschall_midi_move_end_of_time_slection.lua`) need to be manually assigned to a midi signal.*
+
+* Installer: **Update Check**
+*Update Checks can now be en- and disabled at any time in the new start screen of Ultraschall.*
+
+* Theme: **Expanded Ultraschall start screen**
+*The new start screen now also contains the information from the old `About Ultraschall...` menu, which is hereby removed.*
+
+* Soundboard: **Bugfix**
+*The Soundboard will no longer stop playback when recalling a Routing Preset.*
+
+* Soundboard: **Presets**
+*The Soundboard now uses presets throughout. This enables saving and loading of sound sets even during a recording. Such on-the-fly changes also enable to easily use more than 24 sounds during a show. One can assign the presets to one's own project presets, so that each session starts with the correct jingles.*
+
+## 3.0.2 Miedinger - 2017-March-09
+
+* Editing: **Shortcuts for Inpoint and Outpoint**
+*Use the buttons `alt` + `i` and `alt` + `o` to jump to the beginning or end of a time selection. With `shift` + `i` and `shift` + `o` sound will be played from the respective position.*
+
+* Editing: **Improved ripple-cut**
+*The new ripple-cut function (`cmd` + `x` as well as the corresponding icon) now behaves more sensibly: if nothing is selected, nothing happens. If a time selection is selected, only this will be cut, regardless of items that may or may not be selected at the same time. If no time selection is selected, but exactly one item, a ripple cut (Tim's Ripple Cut) is made by means of its edges. If no time selection is selected, but several items, nothing happens.*
+
+* Editing: **Quickly change and freeze track height**
+*Use the `h` key to quickly switch between two (adjustable) track heights, which keep their height even when the window is changed in size. The switch affects all selected tracks. If no track is selected, all tracks are affected. The freezing of the height can be canceled with the zoom buttons beneath the vertical scrollbar.*
+
+* Keymap: **Optimization of keyboard shortcuts and mapping for Windows**
+*The assignment of shortcuts for Windows was adapted to the behavior on macOS. The PDF template now works the same on both systems. New shortcuts include: `shift` + `n` - Normalization of selected items as well as `alt` + `d` - Switch off all docks for distraction-free editing.*
+
+* Theme: **FX buttons on master channel**
+*The buttons for setting FX are now also visible in the master channel in any size.*
+
+* Actions: **Advanced Prepare all tracks for editing**
+*The function now includes switching on the sends of all tracks towards the master channel - a common source of mistakes for seemingly missing tracks in the final mix.*
+
+* Mastering: **Extended episode images**
+*To quickly use a standard image as episode image, you may now also use files with the name `cover.jpg`, `cover.jpeg` or `cover.png` in the project folder. Thanks to Mespotine for the idea.*
 
 ## 3.0.1 Miedinger - 2017-March-05
 
@@ -53,7 +111,7 @@ Please consult our tutorial videos (German) for detailed advide: [http://ultrasc
 *Selecting time places the play cursor directly at the inpoint of the selection, to that one can use `return` or `space` to directly listen to the selection.*
 
 * Editing: **Expanded Ripple Cut**
-*The shortcut `cmd`+`x` effects a ripple cut over all tracks, even when only a single item is selected. The cutting range will then be the start- and endpoint of the item.*
+*The shortcut `cmd` + `x` effects a ripple cut over all tracks, even when only a single item is selected. The cutting range will then be the start- and endpoint of the item.*
 
 * Keymap: **New Layout for Keyboard Shortcuts**
 *A multitude of shortcuts was reworked and newly added in order to enable more efficient cutting via the keyboard. The new shortcuts are visualised in a [.PDF](http://url.ultraschall-podcast.de/keymap) and you can reflect customizations in the corresponding PowerPoint source file.*
@@ -99,6 +157,17 @@ Please consult our tutorial videos (German) for detailed advide: [http://ultrasc
 * StudioLink: **Update**
 *Ultraschall now includes the updated StudioLink version 16.04.1.*
 
+## 2.2.2 Gropius - 2016-August-14
+
+* Soundboard [Mac]: **Bugfix**
+*Fixed a bug that prevented a recorded soundboard-track from playing.*
+
+* Misc [Windows]: **Compatibility**
+*Updates for Windows 10 Version 1607 (Build 14393, Anniversary-Update).*
+
+* StudioLink: **Update**
+*Ultraschall now includes the updated StudioLink version 16.04.1.*
+
 ## 2.2.1 Gropius - 2016-June-09
 
 * Installer: **Bugfix**
@@ -125,7 +194,7 @@ Please consult our tutorial videos (German) for detailed advide: [http://ultrasc
 *Ultraschall 2.2 introduces the "Customize" menu item. You can use 'Shortcuts and action list' to change keyboard shortcuts and add new scripts to Ultraschall. Use 'Track: set track icon' and 'Show theme configuration window' to change the icons, colors and names of each track.*
 
 * StudioLink: **Full integration of the StudioLink plugin**
-*Ultraschall now supports the StudioLink plugin. With StudioLink you can record remote calls on up to 8 individual tracks without the need to setup the notorious 'N-1 Schalte'. Remote attendees are not required to use REAPER. They can download the StudioLink Standalone-App (see https://doku.Studio Link.de/standalone/installation-standalone.html).*
+*Ultraschall now supports the StudioLink plugin. With StudioLink you can record remote calls on up to 8 individual tracks without the need to setup the notorious 'N-1 Schalte'. Remote attendees are not required to use REAPER. They can download the StudioLink Standalone-App (see https://doku.studio-link.de/standalone/installation-standalone.html).*
 
 * Soundboard: **Soundboard for Windows**
 *The Ultraschall Soundboard now runs on Windows as a VST.*
@@ -174,7 +243,7 @@ Please consult our tutorial videos (German) for detailed advide: [http://ultrasc
 *In order to prevent the unintended stop of an ongoing recording, the keys `RETURN` and `SPACE` are now deactivated during a recording. A prompt will appear and can be affirmed to actually stop the recording.*
 
 * Actions: **More robust chapter mark functions**
-*All chapter mark functions were re-implemented in Lua and now take into account, whether a recording is **a)** ongoing, in which case the marker is set at the currently recorded position, or **b)** being played back, in which case it is set at the currently played position, or **c)** not applicable, in which case the marker is set to current position of the editing cursor. The MIDI connection was redesigned more robustly, so that chapter marks can be set via MIDI in any program state -- even when existing markers are being edited.*
+*All chapter mark functions were reimplemented in Lua and now take into account, whether a recording is **a)** ongoing, in which case the marker is set at the currently recorded position, or **b)** being played back, in which case it is set at the currently played position, or **c)** not applicable, in which case the marker is set to current position of the editing cursor. The MIDI connection was redesigned more robustly, so that chapter marks can be set via MIDI in any program state -- even when existing markers are being edited.*
 
 * Actions: **Labelling of Ultraschall actions**
 *All Ultraschall function are now uniformly pre-fixed with `ULTRASCHALL:` and more clearly labelled in the actions dialogue for the keyboard assignments, which is accessible through the `?` key.*

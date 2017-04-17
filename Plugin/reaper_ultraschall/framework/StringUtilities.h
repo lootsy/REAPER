@@ -41,7 +41,7 @@ namespace framework
 #define _MAKE_TEXT(str) #str
 #define MAKE_TEXT(str) _MAKE_TEXT(str)
 
-inline std::vector<std::string> split(const std::string &input, const char delimiter)
+inline std::vector<std::string> StringTokenize(const std::string &input, const char delimiter)
 {
    std::vector<std::string> tokens;
    std::stringstream stream(input);
@@ -56,26 +56,26 @@ inline std::vector<std::string> split(const std::string &input, const char delim
 }
 
 // trim from start
-static inline std::string &ltrim(std::string &s)
+static inline std::string &StringTrimLeft(std::string &s)
 {
    s.erase(s.begin(), std::find_if(s.begin(), s.end(), std::not1(std::ptr_fun<int, int>(std::isspace))));
    return s;
 }
 
 // trim from end
-static inline std::string &rtrim(std::string &s)
+static inline std::string &StringTrimRight(std::string &s)
 {
    s.erase(std::find_if(s.rbegin(), s.rend(), std::not1(std::ptr_fun<int, int>(std::isspace))).base(), s.end());
    return s;
 }
 
 // trim from both ends
-static inline std::string &trim(std::string &s)
+static inline std::string &StringTrim(std::string &s)
 {
-   return ltrim(rtrim(s));
+   return StringTrimLeft(StringTrimRight(s));
 }
 
-static inline void replace(std::string &str, const std::string &source, const std::string &target)
+static inline void StringReplace(std::string &str, const std::string &source, const std::string &target)
 {
    size_t start_pos = 0;
    while ((start_pos = str.find(source, start_pos)) != std::string::npos)
@@ -85,6 +85,22 @@ static inline void replace(std::string &str, const std::string &source, const st
    }
 }
 
+static inline int StringToInt(const std::string& str)
+{
+   int result = -1;
+   
+   if(str.empty() == false)
+   {
+      std::istringstream is(str);
+      is >> result;
+   }
+   
+   return result;
+}
+   
+std::string StringLowercase(const std::string& str);
+std::string StringUppercase(const std::string& str);
+   
 #ifdef ULTRASCHALL_PLATFORM_MACOS
 typedef char16_t UnicodeChar;
 typedef std::u16string UnicodeString;
@@ -93,18 +109,15 @@ typedef wchar_t UnicodeChar;
 typedef std::wstring UnicodeString;
 #endif // #ifdef ULTRASCHALL_PLATFORM_MACOS
 
-UnicodeString MakeUnicodeString(const std::string& src);
+UnicodeString MakeUnicodeString(const std::string &src);
 
-UnicodeString MakeUnicodeStringWithBOM(const std::string& src);
-   
-std::string MakeUTF8String(const UnicodeString& src);
+UnicodeString MakeUnicodeStringWithBOM(const std::string &src);
 
-std::string AnsiStringToUnicodeString(const std::string& ansiString);
+std::string MakeUTF8String(const UnicodeString &src);
 
 std::wstring AnsiStringToWideUnicodeString(const std::string& ansiString);
 
 std::string UnicodeStringToAnsiString(const std::string& unicodeString, int codepage = 0);
-   
 }
 }
 

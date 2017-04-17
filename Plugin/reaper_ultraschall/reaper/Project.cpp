@@ -103,7 +103,7 @@ std::string Project::FolderName() const
    if (fullPath.empty() == false)
    {
       const char pathSeparator = FileManager::PathSeparator();
-      const std::vector<std::string> pathComponents = framework::split(fullPath, pathSeparator);
+      const std::vector<std::string> pathComponents = framework::StringTokenize(fullPath, pathSeparator);
       if (pathComponents.empty() == false)
       {
          for (size_t i = 0; i < pathComponents.size() - 1; i++)
@@ -128,7 +128,7 @@ std::string Project::FileName() const
    if (fullPath.empty() == false)
    {
       const char pathSeparator = FileManager::PathSeparator();
-      const std::vector<std::string> pathComponents = framework::split(fullPath, pathSeparator);
+      const std::vector<std::string> pathComponents = framework::StringTokenize(fullPath, pathSeparator);
       if (pathComponents.empty() == false)
       {
          result = pathComponents[pathComponents.size() - 1];
@@ -172,7 +172,7 @@ bool Project::InsertMarker(const Marker &marker)
    return false;
 }
 
-bool Project::InsertMarker(const std::string &name, const int color, const double position)
+bool Project::InsertMarker(const std::string &name, const int /*color*/, const double position)
 {
    PRECONDITION_RETURN(projectReference_ != 0, false);
    PRECONDITION_RETURN(name.empty() == false, false);

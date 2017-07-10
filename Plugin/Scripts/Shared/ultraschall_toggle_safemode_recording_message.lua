@@ -24,67 +24,20 @@
 ################################################################################
 ]]
 
+-- Toggles external state, that signal the Start/Stop and Start/Pause-scripts, 
+-- that safemode shall be applied or not.
+--
+-- After toggling, a messagewindow appears, showing current Safemode-Toggle-State.
 
---[[reaper.GetPlayState()
+state=reaper.GetExtState("Ultraschall_Transport", "Safemode_Toggle")
 
-0=stop,
-1=playing,
-2=pause,
-5=is recording
-6=record paused
-]]
+if state=="ON" or state=="" then -- If SafeMode is ON or was never set, turn it OFF
+  reaper.SetExtState("Ultraschall_Transport", "Safemode_Toggle", "OFF", true)
 
-function main()
-state = reaper.GetPlayState()
--- reaper.ShowConsoleMsg(state)
--- reaper.ShowConsoleMsg(result)
- 
-if state == 5 then -- is recording
-
-  --[[type:
-  0=OK,
-  1=OKCANCEL,
-  2=ABORTRETRYIGNORE,
-   3=YESNOCANCEL,
-   4=YESNO,
-   5=RETRYCANCEL]]
-
-  type = 4
-  title = "Stop Recording?"
-  msg = "Stop the currently running recording. No more audio will be recorded to disk."
- 
- 
--- Safe-Mode Toggle-Logic
-SafeModeToggleState=reaper.GetExtState("Ultraschall_Transport", "Safemode_Toggle") -- Get the Safemode-Toggle-State
-
-if SafeModeToggleState=="OFF" then -- If Safe-Mode is OFF, show no message-box
-    result = 6
-    
-elseif SafeModeToggleState=="ON" or SafeModeToggleState=="" then -- If Safe-Mode is ON or was never toggled, show the message-box
-    result=reaper.ShowMessageBox( msg, title, type )
-end
-    
-
-  --[[result:
-  1=OK,
-   2=CANCEL,
-   3=ABORT,
-   4=RETRY,
-   5=IGNORE,
-   6=YES,
-   7=NO
-  ]]
-
-  if result == 6 then -- it's ok to stop the recording
-    reaper.OnStopButton()
-  end
-
-elseif state == 1 then -- playing
-  reaper.OnStopButton()
+elseif state=="OFF" then -- If SafeMode is OFF, turn it ON
+  reaper.SetExtState("Ultraschall_Transport", "Safemode_Toggle", "ON", true)
   
-else -- pause or stop
-  reaper.OnPlayButton()
-
 end
- end
-reaper.defer(main)
+
+state=reaper.GetExtState("Ultraschall_Transport", "Safemode_Toggle")
+reaper.MB("Safemode is turned "..state,"Safemode toggle", 0)
